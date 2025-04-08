@@ -386,11 +386,11 @@ class SoniTranslate(SoniTrCache):
         batch_size=4,
         compute_type="auto",
         origin_language="Automatic detection",
-        target_language="English (en)",
+        target_language="Arabic (ar)",
         min_speakers=1,
         max_speakers=1,
-        tts_voice00="en-US-EmmaMultilingualNeural-Female",
-        tts_voice01="en-US-AndrewMultilingualNeural-Male",
+        tts_voice00="en-US-AndrewMultilingualNeural-Male",
+        tts_voice01="en-US-EmmaMultilingualNeural-Female",
         tts_voice02="en-US-AvaMultilingualNeural-Female",
         tts_voice03="en-US-BrianMultilingualNeural-Male",
         tts_voice04="de-DE-SeraphinaMultilingualNeural-Female",
@@ -404,7 +404,7 @@ class SoniTranslate(SoniTrCache):
         video_output_name="",
         mix_method_audio="Adjusting volumes and mixing audio",
         max_accelerate_audio=2.1,
-        acceleration_rate_regulation=False,
+        acceleration_rate_regulation=True,
         volume_original_audio=0.25,
         volume_translated_audio=1.80,
         output_format_subtitle="srt",
@@ -419,7 +419,7 @@ class SoniTranslate(SoniTrCache):
         translate_process="google_translator_batch",
         subtitle_file=None,
         output_type="video (mp4)",
-        voiceless_track=False,
+        voiceless_track=True,
         voice_imitation=False,
         voice_imitation_max_segments=3,
         voice_imitation_vocals_dereverb=False,
@@ -1258,7 +1258,7 @@ class SoniTranslate(SoniTrCache):
         document=None,  # doc path gui
         directory_input="",  # doc path
         origin_language="English (en)",
-        target_language="English (en)",
+        target_language="Arabic (ar)",
         tts_voice00="en-US-EmmaMultilingualNeural-Female",
         name_final_file="",
         translate_process="google_translator",
@@ -1504,7 +1504,7 @@ def create_gui(theme, logs_in_gui=False):
                     )
                     TRANSLATE_AUDIO_TO = gr.Dropdown(
                         LANGUAGES_LIST[1:],
-                        value="English (en)",
+                        value="Arabic (ar)",
                         label=lg_conf["tat_label"],
                         info=lg_conf["tat_info"],
                     )
@@ -1539,15 +1539,15 @@ def create_gui(theme, logs_in_gui=False):
 
                     tts_voice00 = gr.Dropdown(
                         SoniTr.tts_info.tts_list(),
-                        value="en-US-EmmaMultilingualNeural-Female",
-                        label=lg_conf["sk1"],
+                        value="en-US-AndrewMultilingualNeural-Male",
+                        label=lg_conf["sk2"],
                         visible=True,
                         interactive=True,
                     )
                     tts_voice01 = gr.Dropdown(
                         SoniTr.tts_info.tts_list(),
-                        value="en-US-AndrewMultilingualNeural-Male",
-                        label=lg_conf["sk2"],
+                        value="en-US-EmmaMultilingualNeural-Female",
+                        label=lg_conf["sk1"],
                         visible=True,
                         interactive=True,
                     )
@@ -1749,7 +1749,7 @@ def create_gui(theme, logs_in_gui=False):
                                 info=lg_conf["acc_max_info"],
                             )
                             acceleration_rate_regulation_gui = gr.Checkbox(
-                                False,
+                                True,
                                 label=lg_conf["acc_rate_label"],
                                 info=lg_conf["acc_rate_info"],
                             )
